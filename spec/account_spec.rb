@@ -3,7 +3,6 @@
 require 'account'
 
 describe Account do
-  
   it 'has a starting, default balance of zero' do
     expect(subject.balance).to eq 0
   end
@@ -68,9 +67,14 @@ describe Account do
       expect(subject.balance).to eq 0
     end
 
+    it 'throws an error when balance is less than withdrawal amount' do
+      expect{subject.withdraw(10)}.to raise_error 'Insufficient funds available'
+    end 
+
     it 'pushes a new Transaction obj into transactions array' do
+      subject.deposit(10)
       subject.withdraw(10)
-      expect(subject.transactions[0]).to be_a Transaction
+      expect(subject.transactions[1]).to be_a Transaction
     end
 
     it 'each transaction obj pushed into array with correct balance at time' do
@@ -82,9 +86,9 @@ describe Account do
     end
 
     it 'pushes Transaction obj with correct attrs into transactions array' do
+      subject.deposit(10)
       subject.withdraw(10)
-      expect(subject.transactions[0].type).to eq 'debit'
+      expect(subject.transactions[1].type).to eq 'debit'
     end
-
   end
 end

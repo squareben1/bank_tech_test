@@ -3,7 +3,7 @@
 class Account
   attr_reader :balance, :transactions
 
-  def initialize(balance = 0, injected_class=Transaction)
+  def initialize(balance = 0, injected_class = Transaction)
     @balance = balance
     @transactions = []
     @injected_class = injected_class
@@ -15,8 +15,12 @@ class Account
   end
 
   def withdraw(amount)
-    @balance -= amount
-    new_transaction(amount, 'debit')
+    if @balance >= amount
+      @balance -= amount
+      new_transaction(amount, 'debit')
+    else 
+      raise 'Insufficient funds available'
+    end 
   end
 
   def new_transaction(amount, type)

@@ -30,6 +30,8 @@ REPL Only, no command line interface (just use methods)
 
 Data only - i.e. no databases - just the one repl session (confirmed with coach)
 
+Presumed edge case: User cannot go overdrawn
+
 ## User Stories ##
 
 As a user  
@@ -46,4 +48,9 @@ I would like to make a withdrawal
 
 As a user  
 So I can see a history of transactions on my account  
-I would like to print my bank statement  
+I would like to print my bank statement 
+
+As a user  
+So I cannot go overdrawn  
+I would like my account to throw an error when I attempt to withdraw more money than is in my account    
+
