@@ -3,6 +3,7 @@
 require 'account'
 
 describe Account do
+  
   it 'has a starting, default balance of zero' do
     expect(subject.balance).to eq 0
   end
@@ -60,6 +61,11 @@ describe Account do
       subject.deposit(10)
       subject.withdraw(10)
       expect(subject.balance).to eq 0
+    end
+
+    it 'pushes a new Transaction obj into transactions array' do
+      subject.withdraw(10)
+      expect(subject.transactions[0]).to be_a Transaction
     end
   end
 end

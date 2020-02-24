@@ -20,5 +20,6 @@ class Account
 
   def withdraw(amount)
     @balance -= amount
+    new_transaction(amount)
   end
 end
