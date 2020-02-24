@@ -17,24 +17,27 @@ describe Account do
       expect(subject.balance).to eq 10
     end
 
-    it 'returns a new Transaction obj' do
-      expect(subject.deposit(10)).to be_a Transaction
+    it 'pushes a new Transaction obj into transactions array' do
+      subject.deposit(10)
+      expect(subject.transactions[0]).to be_a Transaction
     end
 
-    it 'return Transaction obj with type credit' do
+    xit 'return Transaction obj with type credit' do
       transaction = subject.deposit(10)
       expect(transaction.type).to eq 'credit'
     end
 
-    it 'returns a new Transaction obj w/ amount set as deposit amount (10)' do
+    xit 'returns a new Transaction obj w/ amount set as deposit amount (10)' do
       transaction = subject.deposit(10)
       expect(transaction.amount).to eq 10
     end
 
-    it 'returns a new Transaction obj w/ amount set as deposit amount (20)' do
+    xit 'returns a new Transaction obj w/ amount set as deposit amount (20)' do
       transaction = subject.deposit(20)
       expect(transaction.amount).to eq 20
     end
+
+
   end
 
   describe '#withdraw' do
