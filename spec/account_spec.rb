@@ -22,9 +22,9 @@ describe Account do
       expect(subject.transactions[0]).to be_a Transaction
     end
 
-    xit 'return Transaction obj with type credit' do
-      transaction = subject.deposit(10)
-      expect(transaction.type).to eq 'credit'
+    it 'pushes Transaction obj with type credit into transactions array' do
+      subject.deposit(10)
+      expect(subject.transactions[0].type).to eq 'credit'
     end
 
     xit 'returns a new Transaction obj w/ amount set as deposit amount (10)' do
