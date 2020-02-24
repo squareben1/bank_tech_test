@@ -27,6 +27,14 @@ describe Account do
       expect(subject.transactions[0].type).to eq 'credit'
       expect(subject.transactions[0].amount).to eq 10
       expect(subject.transactions[0].date).to eq Time.new.strftime('%d/%m/%Y')
+      expect(subject.transactions[0].balance).to eq subject.balance
+    end
+
+    it 'transaction objs are pushed into array with correct balances at time each one is created' do
+      subject.deposit(10)
+      expect(subject.transactions[0].balance).to eq 10
+      subject.deposit(20)
+      expect(subject.transactions[1].balance).to eq 30
     end
 
     it 'returns a new Transaction obj w/ amount set as deposit amount (10)' do
