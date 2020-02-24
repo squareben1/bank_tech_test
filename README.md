@@ -32,18 +32,18 @@ Data only - i.e. no databases - just the one repl session (confirmed with coach)
 
 ## User Stories ##
 
-As a user 
-So I can deposit and withdraw my money
-I would like to have a balance
+As a user  
+So I can deposit and withdraw my money  
+I would like to have a balance  
 
-As a user
-So I can add money to my account 
-I would like to make a deposit
+As a user  
+So I can add money to my account  
+I would like to make a deposit  
 
-As a user
-So I can take money out of my account
-I would like to make a withdrawal
+As a user  
+So I can take money out of my account  
+I would like to make a withdrawal  
 
-As a user
-So I can see a history of transactions on my account
-I would like to print my bank statement
+As a user  
+So I can see a history of transactions on my account  
+I would like to print my bank statement  
