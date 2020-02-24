@@ -11,15 +11,15 @@ class Account
 
   def deposit(amount)
     @balance += amount
-    new_transaction(amount)
+    new_transaction(amount, 'credit')
   end
 
   def withdraw(amount)
     @balance -= amount
-    new_transaction(amount)
+    new_transaction(amount, 'debit')
   end
 
-  def new_transaction(amount)
-    @transactions.push(@injected_class.create(Time.new.strftime('%d/%m/%Y'), 'credit', amount, @balance))
+  def new_transaction(amount, type)
+    @transactions.push(@injected_class.create(Time.new.strftime('%d/%m/%Y'), type, amount, @balance))
   end
 end

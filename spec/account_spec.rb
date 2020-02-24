@@ -51,8 +51,13 @@ describe Account do
 
   describe '#new_transaction' do
     it 'should push new transaction w/ specified amount into array' do
-      subject.new_transaction(10)
+      subject.new_transaction(10, 'credit')
       expect(subject.transactions[0].amount).to eq 10
+    end
+
+    it 'should push new transaction w/ specified amount into array' do
+      subject.new_transaction(10, 'credit')
+      expect(subject.transactions[0].type).to eq 'credit'
     end
   end
 
@@ -75,5 +80,11 @@ describe Account do
       subject.withdraw(10)
       expect(subject.transactions[2].balance).to eq 10
     end
+
+    it 'pushes Transaction obj with correct attrs into transactions array' do
+      subject.withdraw(10)
+      expect(subject.transactions[0].type).to eq 'debit'
+    end
+
   end
 end
