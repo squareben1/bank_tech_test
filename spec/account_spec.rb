@@ -67,5 +67,13 @@ describe Account do
       subject.withdraw(10)
       expect(subject.transactions[0]).to be_a Transaction
     end
+
+    it 'each transaction obj pushed into array with correct balance at time' do
+      subject.deposit(30)
+      subject.withdraw(10)
+      expect(subject.transactions[1].balance).to eq 20
+      subject.withdraw(10)
+      expect(subject.transactions[2].balance).to eq 10
+    end
   end
 end

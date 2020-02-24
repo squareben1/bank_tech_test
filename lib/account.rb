@@ -14,12 +14,12 @@ class Account
     new_transaction(amount)
   end
 
-  def new_transaction(amount)
-    @transactions.push(@injected_class.create(Time.new.strftime('%d/%m/%Y'), 'credit', amount, @balance))
-  end
-
   def withdraw(amount)
     @balance -= amount
     new_transaction(amount)
+  end
+
+  def new_transaction(amount)
+    @transactions.push(@injected_class.create(Time.new.strftime('%d/%m/%Y'), 'credit', amount, @balance))
   end
 end
