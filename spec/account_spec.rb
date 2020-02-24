@@ -68,8 +68,8 @@ describe Account do
     end
 
     it 'throws an error when balance is less than withdrawal amount' do
-      expect{subject.withdraw(10)}.to raise_error 'Insufficient funds available'
-    end 
+      expect { subject.withdraw(10) }.to raise_error 'Insufficient funds available'
+    end
 
     it 'pushes a new Transaction obj into transactions array' do
       subject.deposit(10)
@@ -89,6 +89,18 @@ describe Account do
       subject.deposit(10)
       subject.withdraw(10)
       expect(subject.transactions[1].type).to eq 'debit'
+    end
+  end
+
+  describe '#print_balance' do
+    it 'should return headings only when no transactions present' do
+      expect(subject.print_balance).to eq "date || credit || debit || balance"
+    end
+
+    it 'should return headings and 1 deposit as string w attrs seperated by ||' do
+      subject.deposit(10)
+      p subject.transactions[0]
+      expect(subject.print_balance).to eq "date || credit || debit || balance\n24/02/2020 || credit || 10 || 10"
     end
   end
 end

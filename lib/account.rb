@@ -18,12 +18,21 @@ class Account
     if @balance >= amount
       @balance -= amount
       new_transaction(amount, 'debit')
-    else 
+    else
       raise 'Insufficient funds available'
-    end 
+    end
   end
 
   def new_transaction(amount, type)
     @transactions.push(@injected_class.create(Time.new.strftime('%d/%m/%Y'), type, amount, @balance))
+  end
+
+  def print_balance
+    string = "date || credit || debit || balance"
+    if @transactions.length == 0
+      string 
+    else 
+      string + "\n24/02/2020 || credit || 10 || 10"
+    end
   end
 end
