@@ -48,6 +48,13 @@ describe Account do
     end
   end
 
+  describe '#new_transaction' do 
+    it 'should push new transaction w/ specified amount into transactions array' do 
+      subject.new_transaction(10)
+      expect(subject.transactions[0].amount).to eq 10
+    end 
+  end 
+
   describe '#withdraw' do
     it 'subtracts 10 from balance' do
       subject.deposit(10)
