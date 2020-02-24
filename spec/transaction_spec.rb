@@ -3,10 +3,12 @@
 require 'transaction'
 
 describe Transaction do
-  transaction = Transaction.new(12 / 0o2 / 2020, 'Deposit', 10)
+  time = Time.new
+   
+  transaction = Transaction.new(time.strftime("%d/%m/%Y"), 'Deposit', 10)
 
   it 'should set date of transaction as attr from arg' do
-    expect(transaction.date).to eq 12 / 0o2 / 2020
+    expect(transaction.date).to eq time.strftime("%d/%m/%Y")
   end
 
   it 'should set type of transaction as attr from arg' do
