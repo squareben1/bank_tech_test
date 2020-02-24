@@ -22,19 +22,21 @@ describe Account do
       expect(subject.transactions[0]).to be_a Transaction
     end
 
-    it 'pushes Transaction obj with type credit into transactions array' do
+    it 'pushes Transaction obj with correct attributes into transactions array' do
       subject.deposit(10)
       expect(subject.transactions[0].type).to eq 'credit'
+      expect(subject.transactions[0].amount).to eq 10
+      expect(subject.transactions[0].date).to eq Time.new.strftime("%d/%m/%Y")
     end
 
-    xit 'returns a new Transaction obj w/ amount set as deposit amount (10)' do
+    it 'returns a new Transaction obj w/ amount set as deposit amount (10)' do
       transaction = subject.deposit(10)
-      expect(transaction.amount).to eq 10
+      expect(subject.transactions[0].amount).to eq 10
     end
 
-    xit 'returns a new Transaction obj w/ amount set as deposit amount (20)' do
-      transaction = subject.deposit(20)
-      expect(transaction.amount).to eq 20
+    it 'returns a new Transaction obj w/ amount set as deposit amount (20)' do
+      subject.deposit(20)
+      expect(subject.transactions[0].amount).to eq 20
     end
 
 
