@@ -1,8 +1,14 @@
+# frozen_string_literal: true
+
 require 'account'
 
 describe Account do
   it 'has a starting, default balance of zero' do
     expect(subject.balance).to eq 0
+  end
+
+  it 'has empty transactions array' do 
+    expect(subject.transactions).to eq []
   end
 
   describe '#deposit' do
