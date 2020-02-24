@@ -9,4 +9,8 @@ class Transaction
     @amount = amount
     @balance = balance
   end
+
+  def self.create(date, type, amount, balance)
+    Transaction.new(date, type, amount, balance)
+  end
 end

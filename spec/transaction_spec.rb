@@ -21,4 +21,10 @@ describe Transaction do
   it 'should set balance' do
     expect(transaction.balance).to eq 10
   end
+
+  describe '#create' do
+    it 'should create an instance of Transaction class' do
+      expect(Transaction.create(Time.new.strftime('%d/%m/%Y'), 'Deposit', 10, 10)).to be_a Transaction
+    end
+  end
 end
