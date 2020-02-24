@@ -22,7 +22,7 @@ describe Account do
       expect(subject.transactions[0]).to be_a Transaction
     end
 
-    it 'pushes Transaction obj with correct attributes into transactions array' do
+    it 'pushes Transaction obj with correct attrs into transactions array' do
       subject.deposit(10)
       expect(subject.transactions[0].type).to eq 'credit'
       expect(subject.transactions[0].amount).to eq 10
@@ -30,7 +30,7 @@ describe Account do
       expect(subject.transactions[0].balance).to eq subject.balance
     end
 
-    it 'transaction objs are pushed into array with correct balances at time each one is created' do
+    it 'each transaction obj pushed into array with correct balance at time' do
       subject.deposit(10)
       expect(subject.transactions[0].balance).to eq 10
       subject.deposit(20)
@@ -48,12 +48,12 @@ describe Account do
     end
   end
 
-  describe '#new_transaction' do 
-    it 'should push new transaction w/ specified amount into transactions array' do 
+  describe '#new_transaction' do
+    it 'should push new transaction w/ specified amount into array' do
       subject.new_transaction(10)
       expect(subject.transactions[0].amount).to eq 10
-    end 
-  end 
+    end
+  end
 
   describe '#withdraw' do
     it 'subtracts 10 from balance' do

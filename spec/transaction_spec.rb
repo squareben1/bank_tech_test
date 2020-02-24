@@ -4,7 +4,6 @@ require 'transaction'
 
 describe Transaction do
   time = Time.new
-
   transaction = Transaction.new(time.strftime('%d/%m/%Y'), 'Deposit', 10, 10)
 
   it 'should set date of transaction as attr from arg' do
@@ -19,7 +18,7 @@ describe Transaction do
     expect(transaction.amount).to eq 10
   end
 
-  it 'should set balance' do 
+  it 'should set balance' do
     expect(transaction.balance).to eq 10
-  end 
+  end
 end
