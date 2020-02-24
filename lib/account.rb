@@ -10,7 +10,7 @@ class Account
 
   def deposit(amount)
     @balance += amount
-    @transactions.push(Transaction.new(Time.new.strftime("%d/%m/%Y"), 'credit', amount))
+    @transactions.push(Transaction.new(Time.new.strftime('%d/%m/%Y'), 'credit', amount, @balance))
   end
 
   def withdraw(amount)

@@ -7,7 +7,7 @@ describe Account do
     expect(subject.balance).to eq 0
   end
 
-  it 'has empty transactions array' do 
+  it 'has empty transactions array' do
     expect(subject.transactions).to eq []
   end
 
@@ -26,7 +26,7 @@ describe Account do
       subject.deposit(10)
       expect(subject.transactions[0].type).to eq 'credit'
       expect(subject.transactions[0].amount).to eq 10
-      expect(subject.transactions[0].date).to eq Time.new.strftime("%d/%m/%Y")
+      expect(subject.transactions[0].date).to eq Time.new.strftime('%d/%m/%Y')
     end
 
     it 'returns a new Transaction obj w/ amount set as deposit amount (10)' do
@@ -38,8 +38,6 @@ describe Account do
       subject.deposit(20)
       expect(subject.transactions[0].amount).to eq 20
     end
-
-
   end
 
   describe '#withdraw' do
