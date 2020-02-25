@@ -3,6 +3,7 @@
 require 'account'
 
 describe Account do
+
   it 'has a starting, default balance of zero' do
     expect(subject.balance).to eq 0
   end
@@ -18,16 +19,13 @@ describe Account do
     end
 
     it 'pushes a new Transaction obj into transactions array' do
-      subject.deposit(10)
-      expect(subject.transactions[0]).to be_a Transaction
-    end
+      transaction_class = class_double('Transaction')
+      transaction_instance = instance_double('Transaction', {date: 25/02/2020, type: 'credit', amount: 10, balance: 10})
+      allow(transaction_class).to receive(:new).and_return(transaction_instance)
+      subject = Account.new(0, transaction_class)
 
-    it 'pushes Transaction obj with correct attrs into transactions array' do
       subject.deposit(10)
-      expect(subject.transactions[0].type).to eq 'credit'
-      expect(subject.transactions[0].amount).to eq 10
-      expect(subject.transactions[0].date).to eq Time.new.strftime('%d/%m/%Y')
-      expect(subject.transactions[0].balance).to eq subject.balance
+      expect(subject.transactions[0]).to eq transaction_instance
     end
 
     it 'each transaction obj pushed into array with correct balance at time' do
