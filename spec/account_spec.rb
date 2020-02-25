@@ -3,7 +3,6 @@
 require 'account'
 
 describe Account do
-
   it 'has a starting, default balance of zero' do
     expect(subject.balance).to eq 0
   end
@@ -18,36 +17,19 @@ describe Account do
       expect(subject.balance).to eq 10
     end
 
-    it 'pushes a new Transaction obj into transactions array' do
+    it 'returns a new Transaction obj w/ amount set as deposit amount (10)' do
       transaction_class = class_double('Transaction')
-      transaction_instance = instance_double('Transaction', {date: 25/02/2020, type: 'credit', amount: 10, balance: 10})
+      transaction_instance = instance_double('Transaction', { date: 25 / 0o2 / 2020, type: 'credit', amount: 10, balance: 10 })
       allow(transaction_class).to receive(:new).and_return(transaction_instance)
       subject = Account.new(0, transaction_class)
 
       subject.deposit(10)
-      expect(subject.transactions[0]).to eq transaction_instance
-    end
-
-    it 'each transaction obj pushed into array with correct balance at time' do
-      subject.deposit(10)
-      expect(subject.transactions[0].balance).to eq 10
-      subject.deposit(20)
-      expect(subject.transactions[1].balance).to eq 30
-    end
-
-    it 'returns a new Transaction obj w/ amount set as deposit amount (10)' do
-      transaction = subject.deposit(10)
       expect(subject.transactions[0].amount).to eq 10
-    end
-
-    it 'returns a new Transaction obj w/ amount set as deposit amount (20)' do
-      subject.deposit(20)
-      expect(subject.transactions[0].amount).to eq 20
     end
   end
 
   describe '#new_transaction' do
-    it 'should push new transaction w/ specified amount into array' do
+    it 'should push new transaction into array' do
       subject.new_transaction(10, 'credit')
       expect(subject.transactions[0].amount).to eq 10
     end
@@ -92,7 +74,7 @@ describe Account do
 
   describe '#print_balance' do
     it 'should return headings only when no transactions present' do
-      expect(subject.print_balance).to eq "date || credit || debit || balance"
+      expect(subject.print_balance).to eq 'date || credit || debit || balance'
     end
 
     it 'should return headings and 1 deposit as string w attrs seperated by ||' do
