@@ -30,11 +30,21 @@ describe Account do
 
   describe '#new_transaction' do
     it 'should push new transaction into array' do
+      transaction_class = class_double('Transaction')
+      transaction_instance = instance_double('Transaction', { date: 25 / 0o2 / 2020, type: 'credit', amount: 10, balance: 10 })
+      allow(transaction_class).to receive(:new).and_return(transaction_instance)
+      subject = Account.new(0, transaction_class)
+
       subject.new_transaction(10, 'credit')
       expect(subject.transactions[0].amount).to eq 10
     end
 
     it 'should push new transaction w/ specified amount into array' do
+      transaction_class = class_double('Transaction')
+      transaction_instance = instance_double('Transaction', { date: 25 / 0o2 / 2020, type: 'credit', amount: 10, balance: 10 })
+      allow(transaction_class).to receive(:new).and_return(transaction_instance)
+      subject = Account.new(0, transaction_class)
+      
       subject.new_transaction(10, 'credit')
       expect(subject.transactions[0].type).to eq 'credit'
     end
