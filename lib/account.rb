@@ -24,7 +24,7 @@ class Account
   end
 
   def new_transaction(amount, type)
-    @transactions.push(@injected_class.create(Time.new.strftime('%d/%m/%Y'), type, amount, @balance))
+    @transactions.push(@injected_class.new(Time.new.strftime('%d/%m/%Y'), type, amount, @balance))
   end
 
   def print_balance
