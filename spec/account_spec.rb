@@ -22,7 +22,6 @@ describe Account do
       transaction_instance = instance_double('Transaction', { date: '24/02/2020', type: 'credit', amount: 10, balance: 10 })
       allow(transaction_class).to receive(:new).and_return(transaction_instance)
       subject = Account.new(0, transaction_class)
-
       subject.deposit(10)
       expect(subject.transactions[0].amount).to eq 10
     end

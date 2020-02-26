@@ -3,7 +3,7 @@
 class Account
   attr_reader :balance, :transactions
 
-  def initialize(balance = 0, transaction = Transaction) # change class to transaction
+  def initialize(balance = 0, transaction = Transaction)
     @balance = balance
     @transactions = []
     @transaction = transaction
