@@ -12,6 +12,8 @@ class Printer
     transactions.each do |transaction|
       if transaction.type == 'credit'
         array.push("#{transaction.date} || #{transaction.amount} || || #{transaction.balance}")
+      else 
+        array.push("#{transaction.date} || || #{transaction.amount} || #{transaction.balance}")
       end 
     end
     array

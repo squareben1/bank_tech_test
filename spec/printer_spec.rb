@@ -39,8 +39,9 @@ describe Printer do
       expect(subject.stringify_transactions([transaction_instance, transaction_instance_2])).to eq ['24/02/2020 || 10 || || 10', '24/02/2020 || 10 || || 10']
     end
 
-    it 'creates different strings for credits and debits, ' do 
-
+    it 'creates different strings for debits' do
+      transaction_instance = instance_double('Transaction', { date: '24/02/2020', type: 'debit', amount: 10, balance: 10 })
+      expect(subject.stringify_transactions([transaction_instance])).to eq ['24/02/2020 || || 10 || 10']
     end 
   end
 end
