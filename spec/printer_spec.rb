@@ -11,6 +11,7 @@ describe Printer do
     end
 
     it 'should return heading and 1 deposit as string w attrs seperated by ||' do
+      p subject.print_balance(['24/02/2020 || credit || 10 || 10', '24/02/2020 || credit || 10 || 10'])
       expect(subject.print_balance(['24/02/2020 || credit || 10 || 10', '24/02/2020 || credit || 10 || 10'])).to eq "date || credit || debit || balance\n24/02/2020 || credit || 10 || 10\n24/02/2020 || credit || 10 || 10"
     end
 
@@ -27,15 +28,19 @@ describe Printer do
   end
 
   describe '#stringify_transactions' do
-    it 'returns array with one string based on attributes of array of class obj passed in' do
+    it 'returns array with one credit string based on attributes of array of class obj passed in' do
       transaction_instance = instance_double('Transaction', { date: '24/02/2020', type: 'credit', amount: 10, balance: 10 })
-      expect(subject.stringify_transactions([transaction_instance])).to eq ['24/02/2020 || credit || 10 || 10']
+      expect(subject.stringify_transactions([transaction_instance])).to eq ['24/02/2020 || 10 || || 10']
     end
 
-    it 'returns array with 2 strings based on attrs of 2 objs' do 
+    it 'returns array with 2 strings based on attrs of 2 objs of same type' do 
       transaction_instance = instance_double('Transaction', { date: '24/02/2020', type: 'credit', amount: 10, balance: 10 })
       transaction_instance_2 = instance_double('Transaction', { date: '24/02/2020', type: 'credit', amount: 10, balance: 10 })
-      expect(subject.stringify_transactions([transaction_instance, transaction_instance_2])).to eq ['24/02/2020 || credit || 10 || 10', '24/02/2020 || credit || 10 || 10']
+      expect(subject.stringify_transactions([transaction_instance, transaction_instance_2])).to eq ['24/02/2020 || 10 || || 10', '24/02/2020 || 10 || || 10']
+    end
+
+    it 'creates different strings for credits and debits, ' do 
+
     end 
   end
 end

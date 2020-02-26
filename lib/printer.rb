@@ -8,8 +8,11 @@ class Printer
 
   def stringify_transactions(transactions)
     array = []
+    
     transactions.each do |transaction|
-      array.push("#{transaction.date} || #{transaction.type} || #{transaction.amount} || #{transaction.balance}")
+      if transaction.type == 'credit'
+        array.push("#{transaction.date} || #{transaction.amount} || || #{transaction.balance}")
+      end 
     end
     array
   end 
