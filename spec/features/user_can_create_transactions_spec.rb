@@ -3,7 +3,6 @@
 require 'account'
 
 describe Account do
-
   describe '#deposit interacts correctly w Transaction class' do
     it 'pushes a new class obj into transactions array' do
       subject.deposit(10)
