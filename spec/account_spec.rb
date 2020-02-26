@@ -14,7 +14,7 @@ describe Account do
   describe '#deposit' do
     it 'adds 10 to balance' do
       subject.deposit(10)
-      expect(subject.balance).to eq 10
+      expect(subject.balance).to eq 10  #testing state
     end
 
     it 'returns a new Transaction obj w/ amount set as deposit amount (10)' do
@@ -59,34 +59,6 @@ describe Account do
 
     it 'throws an error when balance is less than withdrawal amount' do
       expect { subject.withdraw(10) }.to raise_error 'Insufficient funds available'
-    end
-  end
-
-  describe '#print_balance' do
-    it 'should return headings only when no transactions present' do
-      expect(subject.print_balance).to eq 'date || credit || debit || balance'
-    end
-
-    it 'should return headings and 1 deposit as string w attrs seperated by ||' do
-      transaction_class = class_double('Transaction')
-      transaction_instance = instance_double('Transaction', { date: '24/02/2020', type: 'credit', amount: 10, balance: 10 })
-      allow(transaction_class).to receive(:new).and_return(transaction_instance)
-      subject = Account.new(0, transaction_class)
-
-      subject.deposit(10)
-      expect(subject.print_balance).to eq "date || credit || debit || balance\n24/02/2020 || credit || 10 || 10"
-    end
-
-    xit 'should iterate over multiple transactions in array and print correctly' do
-      transaction_class = class_double('Transaction')
-      transaction_instance = instance_double('Transaction', { date: '24/02/2020', type: 'credit', amount: 10, balance: 10 })
-      allow(transaction_class).to receive(:new).and_return(transaction_instance)
-      subject = Account.new(0, transaction_class)
-
-      subject.deposit(10)
-      subject.deposit(10)
-      p subject.transactions
-      expect(subject.print_balance).to eq "date || credit || debit || balance\n24/02/2020 || credit || 10 || 10\n24/02/2020 || credit || 10 || 10"
     end
   end
 end
