@@ -13,7 +13,6 @@ describe Printer do
     end
 
     it 'should return heading and 1 deposit as string w attrs seperated by ||' do
-      p subject.print_balance(['24/02/2020 || credit || 10 || 10', '24/02/2020 || credit || 10 || 10'])
       expect(subject.print_balance(['24/02/2020 || credit || 10 || 10', '24/02/2020 || credit || 10 || 10'])).to eq "date || credit || debit || balance\n24/02/2020 || credit || 10 || 10\n24/02/2020 || credit || 10 || 10"
     end
   end

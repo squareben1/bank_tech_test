@@ -1,16 +1,30 @@
-# bank_tech_test
-Makers Week10 - Individual Tech Test 1
+# Bank Tech Test :bank:
+This is a a technical test from Week 10 of the Makers bootcamp. 
 
-# Specification #
+The program allows a user to make deposits to and withdrawals from their bank account. They can also print statements showing their transactions. 
 
-## Requirements ##
+The program can be used in IRB. 
 
-- You should be able to interact with your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
-- Deposits, withdrawal. 
-- Account statement (date, amount, balance) printing.
-- Data can be kept in memory (it doesn't need to be stored to a database or anything).
+## Installation ##
+- Fork and clone the repo. 
+- run  ``` bundle install ``` 
+- require files in your IRB
 
-## Acceptance criteria ##
+## Tech Used ##
+
+Built with Ruby. 
+
+Tested with Rspec. 
+
+## Tests ##
+
+Code Quality/Test Coverage ensured with Rubocop and Simplcov. 
+
+To run tests simply run rspec in the root of the project. 
+
+Test Coverage = 100%
+
+## Example of Functionality ##
 
 **Given** a client makes a deposit of 1000 on 10-01-2012  
 **And** a deposit of 2000 on 13-01-2012  
@@ -23,34 +37,8 @@ Makers Week10 - Individual Tech Test 1
 13/01/2012 || 2000.00 || || 3000.00
 10/01/2012 || 1000.00 || || 1000.00
 ```
+Example of program output:
+![](./images/screenshot.png)
 
-# Breakdown/notes on spec: #
 
-REPL Only, no command line interface (just use methods)
-
-Data only - i.e. no databases - just the one repl session (confirmed with coach)
-
-Presumed edge case: User cannot go overdrawn
-
-## User Stories ##
-
-As a user  
-So I can deposit and withdraw my money  
-I would like to have a balance  
-
-As a user  
-So I can add money to my account  
-I would like to make a deposit  
-
-As a user  
-So I can take money out of my account  
-I would like to make a withdrawal  
-
-As a user  
-So I can see a history of transactions on my account  
-I would like to print my bank statement 
-
-As a user  
-So I cannot go overdrawn  
-I would like my account to throw an error when I attempt to withdraw more money than is in my account    
 

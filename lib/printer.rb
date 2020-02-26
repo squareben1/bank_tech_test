@@ -23,6 +23,7 @@ class Printer
     if transactions[0] == ''
       string
     else
+      puts string + transactions.join("\n")
       string + transactions.join("\n")
     end
   end

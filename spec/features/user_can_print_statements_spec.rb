@@ -8,9 +8,6 @@ describe Printer do
     account = Account.new
     account.deposit(10)
     printer = Printer.new
-    # p "transactions: #{account.transactions}"
-    # p "stringify: #{printer.stringify_transactions(account.transactions)}"
-    # p "print: #{printer.print_balance(printer.stringify_transactions(account.transactions))}"
     expect(printer.print_balance(printer.stringify_transactions(account.transactions))).to eq "date || credit || debit || balance\n26/02/2020 || 10 || || 10"
   end
 
@@ -22,4 +19,3 @@ describe Printer do
     expect(printer.print_balance(printer.stringify_transactions(account.transactions))).to eq "date || credit || debit || balance\n26/02/2020 || 10 || || 10\n26/02/2020 || || 10 || 0"
   end
 end
-
