@@ -1,23 +1,22 @@
 # frozen_string_literal: true
 
 class Printer
-
-  def initialize(account=Account)
+  def initialize(account = Account)
     @account = account
   end
 
   def stringify_transactions(transactions)
     array = []
-    
+
     transactions.each do |transaction|
       if transaction.type == 'credit'
         array.push("#{transaction.date} || #{transaction.amount} || || #{transaction.balance}")
-      else 
+      else
         array.push("#{transaction.date} || || #{transaction.amount} || #{transaction.balance}")
-      end 
+      end
     end
     array
-  end 
+  end
 
   def print_balance(transactions)
     string = "date || credit || debit || balance\n"
@@ -27,4 +26,4 @@ class Printer
       string + transactions.join("\n")
     end
   end
-end 
+end

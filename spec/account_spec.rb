@@ -14,7 +14,7 @@ describe Account do
   describe '#deposit' do
     it 'adds 10 to balance' do
       subject.deposit(10)
-      expect(subject.balance).to eq 10  #testing state
+      expect(subject.balance).to eq 10 # testing state
     end
 
     it 'returns a new Transaction obj w/ amount set as deposit amount (10)' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'printer'
 
 describe Printer do
@@ -14,17 +16,6 @@ describe Printer do
       p subject.print_balance(['24/02/2020 || credit || 10 || 10', '24/02/2020 || credit || 10 || 10'])
       expect(subject.print_balance(['24/02/2020 || credit || 10 || 10', '24/02/2020 || credit || 10 || 10'])).to eq "date || credit || debit || balance\n24/02/2020 || credit || 10 || 10\n24/02/2020 || credit || 10 || 10"
     end
-
-    # xit 'should iterate over multiple transactions in array and print correctly' do
-      # transaction_class = class_double('Transaction')
-      # transaction_instance = instance_double('Transaction', { date: '24/02/2020', type: 'credit', amount: 10, balance: 10 })
-      # allow(transaction_class).to receive(:new).and_return(transaction_instance)
-      # subject = Account.new(0, transaction_class)
-    #   subject.deposit(10)
-    #   subject.deposit(10)
-    #   p subject.transactions[0].amount
-    #   expect(subject.print_balance).to eq "date || credit || debit || balance\n24/02/2020 || credit || 10 || 10\n24/02/2020 || credit || 10 || 10"
-    # end
   end
 
   describe '#stringify_transactions' do
@@ -33,7 +24,7 @@ describe Printer do
       expect(subject.stringify_transactions([transaction_instance])).to eq ['24/02/2020 || 10 || || 10']
     end
 
-    it 'returns array with 2 strings based on attrs of 2 objs of same type' do 
+    it 'returns array with 2 strings based on attrs of 2 objs of same type' do
       transaction_instance = instance_double('Transaction', { date: '24/02/2020', type: 'credit', amount: 10, balance: 10 })
       transaction_instance_2 = instance_double('Transaction', { date: '24/02/2020', type: 'credit', amount: 10, balance: 10 })
       expect(subject.stringify_transactions([transaction_instance, transaction_instance_2])).to eq ['24/02/2020 || 10 || || 10', '24/02/2020 || 10 || || 10']
@@ -42,6 +33,12 @@ describe Printer do
     it 'creates different strings for debits' do
       transaction_instance = instance_double('Transaction', { date: '24/02/2020', type: 'debit', amount: 10, balance: 10 })
       expect(subject.stringify_transactions([transaction_instance])).to eq ['24/02/2020 || || 10 || 10']
-    end 
+    end
+
+    it 'returns array with 2 strings based on attrs of 2 objs, one credit and 1 debit' do
+      transaction_instance = instance_double('Transaction', { date: '24/02/2020', type: 'credit', amount: 10, balance: 10 })
+      transaction_instance_2 = instance_double('Transaction', { date: '24/02/2020', type: 'debit', amount: 10, balance: 10 })
+      expect(subject.stringify_transactions([transaction_instance, transaction_instance_2])).to eq ['24/02/2020 || 10 || || 10', '24/02/2020 || || 10 || 10']
+    end
   end
 end
