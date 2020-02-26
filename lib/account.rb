@@ -12,12 +12,14 @@ class Account
   def deposit(amount)
     @balance += amount
     new_transaction(amount, 'credit')
+    @balance
   end
 
   def withdraw(amount)
     if @balance >= amount
       @balance -= amount
       new_transaction(amount, 'debit')
+      @balance
     else
       raise 'Insufficient funds available'
     end
