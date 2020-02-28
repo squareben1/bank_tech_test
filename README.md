@@ -16,6 +16,11 @@ Built with Ruby.
 
 Tested with Rspec. 
 
+The program was developed using Test Driven Development. 
+
+## Structure ##
+I split the program into three classes each with a distinct responsibility to maintain encapsulation. 
+
 ## Tests ##
 
 Code Quality/Test Coverage ensured with Rubocop and Simplcov. 
