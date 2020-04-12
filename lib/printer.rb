@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class Printer
-  def initialize(account = Account)
-    @account = account
-  end
-
   def stringify_transactions(transactions)
     array = []
 
